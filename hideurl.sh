@@ -1,6 +1,7 @@
 #!/bin/bash
-
-# URL Shortener using hidurl.com API
+# HidURL — Free URL Shortener & URL Hider CLI
+# hide url, shorten url free, url masking, short link generator, url shortener api
+# Shorten and hide any URL from the command line using the HidURL REST API.
 
 API_TOKEN="your_api_token_here"
 API_URL="https://api.hidurl.com/v1/shorten"
@@ -13,14 +14,15 @@ validate_url() {
     fi
 }
 
-echo -e "\n\e[1;32m===== URL Shortener (hidurl.com) =====\e[0m\n"
+echo -e "\n\e[1;32m===== HidURL — Free URL Shortener & Link Hider =====\e[0m"
+echo -e "\e[90m  hide url · shorten url free · url masking · short link generator\e[0m\n"
 
-echo -n "Enter the URL to shorten: "
+echo -n "Enter the URL to shorten and hide: "
 read url
 
 validate_url "$url"
 
-echo -e "\nShortening your URL, please wait...\n"
+echo -e "\nShortening and hiding your URL, please wait...\n"
 
 response=$(curl -s -X POST "$API_URL" \
     -H "Authorization: Bearer $API_TOKEN" \
@@ -50,4 +52,5 @@ if [[ -z "$short_url" ]]; then
 fi
 
 echo -e "\e[32mOriginal URL :\e[0m $url"
-echo -e "\e[32mShortened URL:\e[0m $short_url\n"
+echo -e "\e[32mShort / Hidden URL:\e[0m $short_url"
+echo -e "\n\e[90mPowered by HidURL.com — free url shortener & url hider\e[0m\n"
